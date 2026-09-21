@@ -1,3 +1,4 @@
+{% raw %}
 ## Introduction
 
 Jinja2 is one of the most-used template engines for Python. 
@@ -724,3 +725,5 @@ As a final note, we'd like to share a few best practices with you:
     instead of
     
     `{% if time < 18 %}True{% else %}False{% endif %}`
+
+{% endraw %}
