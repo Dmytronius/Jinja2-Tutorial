@@ -1,5 +1,5 @@
 {% raw %}
-## Introduction
+# Introduction
 
 Jinja2 is one of the most-used template engines for Python. 
 
@@ -7,13 +7,13 @@ The idea of templating is simple - use placeholders in your document that the te
 ![](images/jinja2-engine-transparent.png)
 
 
-## Table of Content
+# Table of Content
 {:.no_toc}
 
 * TOC
 {:toc}
 
-### Jinja basics
+# Jinja basics
 
 In this section, we'll address the following:
 
@@ -23,7 +23,7 @@ In this section, we'll address the following:
 *   Jinja operators overview (`is`, `in`, `|` etc)
 *   Whitespace control
 
-#### Jinja delimiters (tags)
+## Jinja delimiters (tags)
 
 Jinja tags are used to identify Jinja code. All text outside the tags is given as output without change.
 
@@ -33,7 +33,7 @@ Jinja tags are used to identify Jinja code. All text outside the tags is given a
 | `{{ ... }}` | `{{ i }}` | Print. Outputs the value of `i` |
 | `{# ... #}` | {# Testing Jinja #} | Comment. Does nothing, outputs nothing. |
 
-#### Variables
+## Variables
 
 Similar to Python, Jinja variables are case-sensitive, so `my_var` and `my_var` are two different variables.  
 A variable name can contain alpha-numerical, underscore `_`, and dash `-` characters but not special characters like `[`, `]`, `{`, `}`, `\`, `"`, or `'`.
@@ -48,7 +48,7 @@ The following lines do the same thing:
 
 If a variable or attribute does not exist, you will get back an undefined value. The default behavior is to evaluate to an empty string if printed or iterated over, and to fail for every other operation.
 
-#### Data types
+## Data types
 
 | Data type | Example | Description |
 | --- | --- | --- |
@@ -76,7 +76,7 @@ The following table shows how to identify each Jinja data type. For example `{{ 
 | `"myDict": {"key1":5}`   |`{% set myDict={"key1":5} %}` | iterable, sequence, mapping |
 | `"my_list": [1,2,"three"]`|` {% set my_list=[1,2,"three"] %}` | iterable, sequence |
 
-#### `null`, `none`, `undefined`, `defined`
+## `null`, `none`, `undefined`, `defined`
 
 It may be hard at first to understand the difference between these four keywords because they all mean the absence of value. Not to worry - we'll explain each in greater depth here!
 
@@ -94,7 +94,7 @@ The table here demonstrates the difference between these keywords:
 | `none`   | True | True | Empty value |
 | `badVar` | False | False | A variable that does not exist (not defined) |
 
-#### Jinja operators overview
+## Jinja operators overview
 
 | Operator | Example | Description |
 | --- | --- | --- |
@@ -105,7 +105,7 @@ The table here demonstrates the difference between these keywords:
 | `()`  | `{{ my_var.replace(" ", "_") }}` | Calls a callable. |
 | `.` and `[]` | `{{ myDict["myAttr"] }}` | Gets an attribute of an object. |
 
-#### Whitespace control
+## Whitespace control
 
 A minus sign "-" in the opening Jinja tag removes spaces and newlines before the tag. A minus sign "-" in the closing tag removes spaces and newlines after the tag.
 
@@ -118,7 +118,7 @@ The following example demonstrates how the whitespace control works. The dot "·
 | `··{% if true %}···Text····{%- endif %}` | `·····Text` |
 | `··{% if true %}···Text····{% endif %}` | `·····Text····` |
 
-### Expressions
+# Expressions
 
 Here, we'll share information on:
 
@@ -127,7 +127,7 @@ Here, we'll share information on:
 *   Logic (boolean) expressions (`and`, `or`, `not`)
 *   Logical expressions with non-boolean values
 
-#### Mathematical expressions
+## Mathematical expressions
 
 Note that `+` and `*` operators can be used with strings.
 
@@ -141,7 +141,7 @@ Note that `+` and `*` operators can be used with strings.
 | `*`  | `{{ 2 \* 2 }}` <br> `{{ "a" * 3 }}` | `4` <br> `"aaa"` | Multiplies two numbers. This can also be used to repeat a string multiple times. |
 | `**` | `{{ 2 ** 3 }}` | `8`   | Raises the left operand to the power of the right operand. |
 
-#### Comparison expressions
+## Comparison expressions
 
 Jinja inherits the comparison operators from Python. 
 
@@ -154,7 +154,7 @@ Jinja inherits the comparison operators from Python.
 
 Comparisons can be chained arbitrarily. For example, `x < y < z` is equivalent to `x < y and y < z`, except that `y` is evaluated only once. Note that in both cases, `z` is not evaluated at all when `x < y` is found to be `false`. More information can be found in the Python documentation for comparison operations.
 
-#### Logic (boolean) expressions
+## Logic (boolean) expressions
 
 Logic operators are inherited from Python, the same as comparisons. In Python, the left operand is always evaluated before the right operand.   
 Python uses short circuiting when evaluating expressions involving the `and` or `or` operators. When using those operators, Python does not evaluate the second operand unless it is necessary to resolve the result. That allows statements such as `if (s != None) and (len(s) < 10)` to work reliably.
@@ -163,7 +163,7 @@ Python uses short circuiting when evaluating expressions involving the `and` or 
 *   `and` - true if both operands are true. If the left operand is false, then stops and returns false. If the left operand is true, then the right operand is checked.
 *   `not` - negates a statement. Returns true if the right operand is false.
 
-#### Logical expressions with non-boolean values
+## Logical expressions with non-boolean values
 
 The same as Python, Jinja allows non-boolean values in logical expressions. For example, to output the value of variable `my_var` or a default value if it is empty, you can use:
 ```
@@ -199,7 +199,7 @@ The following example shows one of the practical uses of the `and` operator. To 
 my_list and my_list.pop()
 ```
 
-### Execution flow control
+# Execution flow control
 
 Below, we'll explore:
 
@@ -209,7 +209,7 @@ Below, we'll explore:
 *   Accessing variables across the scopes (inside loop)
     
 
-#### `if` statement
+## `if` statement
 
 The `if` statement in Jinja is comparable with the Python `if` statement.
 
@@ -223,7 +223,7 @@ Good night!
 {% endif %}
 ```
 
-#### Inline `if` expression
+## Inline `if` expression
 
 This is how to write the if condition in one line. For print Jinja tag the syntax looks as follows:
 ```
@@ -238,7 +238,7 @@ Below, we show how to set my_var to 0 when it is <0 and leave it untouched other
 {% set my_var = 0 if my_var < 0 else my_var %}{# RIGHT! my_var is untouched when >= 0 #}
 ```
 
-#### `for` loops
+## `for` loops
 
 In this section, we'll address:
 
@@ -363,7 +363,7 @@ The tomato's cost is 2
 The carrot's cost is 1  
 ```
 
-#### Accessing variables across the scopes (inside loop)
+## Accessing variables across scopes (inside loop)
 
 Jinja has very strict variable scoping. If you have an assignment in a loop, it won't work because you don't have access to outer variables inside the loop scope. The solution is to use a special `loop` variable or use a namespace object to allow changes across the scopes (v2.10+).
 
@@ -389,7 +389,7 @@ ns.found = True
 found2   = False 
 ```
   
-### Standard filters (pipe | operator)
+# Standard filters (pipe | operator)
 
 We've seen the use of filters in previous examples. Filters are essentially the functions that are called with a pipe operator | and can take arguments. Multiple filters can be chained. In this case, the output of one filter is applied to the next one.
 
@@ -416,7 +416,7 @@ Below, we'll cover:
 *   `safe`
 *   `tojson`
 
-#### Select or reject elements of a sequence
+## Select or reject elements of a sequence
 
 The following filters are based on the use of Jinja tests described later in this article. These filters apply a test to each object in a sequence, and select or reject the objects depending on the test's result. If no test is specified, each object will be evaluated as a boolean.
 
@@ -443,7 +443,7 @@ The result is:
 [{'id': 1, 'city': 'Kyiv'}, {'id': 2, 'city': 'Paris'}]
 ```
 
-#### safe
+## safe
 
 Turns off automatic HTML escaping. Consider using the safe filter if your data contains apostrophes like in the word "don't".
 
@@ -465,7 +465,7 @@ In this table are the most important characters that get replaced by HTML escapi
 | `"`  | `&quot;` | double-quotes |
 | `'`  | `&#39;` | single-quote |
 
-#### tojson
+## tojson
 
 Serializes input to JSON text. It escapes special characters in strings according to JSON specifications.
 
@@ -494,7 +494,7 @@ Here, you can see the most important characters that get escaped by Unicode esca
 | `\r` | `\u000D` | carriage return |
 | `\t` | `\u0009` | tab |
 
-### Tests (is operator)
+# Tests (`is` operator)
 
 The test operator tests left operand against the test provided as right operand. The result is boolean True or False.
 
@@ -516,7 +516,7 @@ Consider
 | `{{ 1 is odd }}`<br>`{{ 2 is odd }}` | `True`<br>`False` | Returns `true` if the variable is odd |
 | `{{ 1.1 is number }}`<br>`{{ "1" is number }}` | `True`<br>`False` | Tests if the left operand is a number |
 
-### Global functions
+# Global functions
 
 The functions noted here are available in the global scope by default. In this section, we'll provide information on the following functions:
 
@@ -527,30 +527,30 @@ The functions noted here are available in the global scope by default. In this s
 
 Find the full list of global functions in the Jinja documentation.
 
-#### range([start, ]stop[, step])
+## range([start, ]stop[, step])
 
 Returns a list containing an arithmetic progression of integers: `range(i, j)` returns `[i, i+1, i+2, ..., j-1]`. By default, the progression starts from 0. When the step is given, it specifies the increment (or decrement). For example, `range(4)` and `range(0, 4, 1)` return `[0, 1, 2, 3]`. The end point is omitted. These are exactly the valid indices for a list of four elements.
 
-#### cycler(items)
+## cycler(items)
 
 This is a helper function that cycles through items, then restarts once the end is reached.
 
-#### joiner(sep\=',')
+## joiner(sep\=',')
 
 This is a helper function that will return `sep` string every time it’s called except the first time, in which case it returns an empty string.
 
-#### Example of use of `range`, `joiner`, and `cycler` functions.
+## Example of use of `range`, `joiner`, and `cycler` functions.
 
 | Jinja code | Result |
 | --- | --- |
 | `{% set myJoiner = joiner("-") -%}` <br> `{% for e in range(4) -%}` <br>`{{ myJoiner() }}{{ e -}}` <br> `{% endfor %}` | `0-1-2-3` |
 | `{% set myJoiner = joiner("-") -%}` <br>`{% set myCycler = cycler("a", "b") -%}` <br> `{% for e in range(4) -%}` <br> `{{ myJoiner() }}{{ e }}{{ myCycler.next() -}}` <br> `{% endfor %}` | `0a-1b-2a-3b` |
 
-#### lipsum(n=5, html=True, min=20, max=100)
+## lipsum(n=5, html=True, min=20, max=100)
 
 Generates some lorem ipsum text. By default, five paragraphs of HTML are generated, with each paragraph between 20 and 100 words. If html is False, regular text is returned. This is useful to generate simple content for layout testing.
 
-### Useful Jinja code snippets 
+# Useful Jinja code snippets 
 
 In this section, you can find information on:
 
@@ -558,7 +558,7 @@ In this section, you can find information on:
 *   Number manipulation
 *   Date manipulation
 
-#### String manipulation
+## String manipulation
 
 | Example | Output | Description |
 | --- | --- | --- |
@@ -600,7 +600,7 @@ Consider:
 | `{{ my_str.replace("Hello", "Hi") }}` | `Hi world!` | Replaces all occurrences of substring |
 | `{{ my_str.strip("!dH") }}` | `ello worl` | Removes leading and trailing characters passed as an argument, defaults to removing whitespace |
 
-#### Number manipulation
+## Number manipulation
 
 | Example | Output | Description |
 | --- | --- | --- |
@@ -614,7 +614,7 @@ Consider:
 | `{{ '%0x' % 255 }}` | ff  | Changes decimal to hex value |
 | `{{ "%0x" \| format(255) }}` | ff  | Converts numeric value to hex value |
 
-#### Date manipulation
+## Date manipulation
 
 There is no special data type for dates. They are usually represented as strings. Presentation in a format that allows string comparison (such as ISO 8601 date representation standard) is preferred. It will allow filters like "sort" to work.
 
@@ -637,7 +637,7 @@ For the result, the latest element is "golf":
 golf
 ```
 
-### Troubleshooting Jinja code
+# Troubleshooting Jinja code
 
 Jinja's print tag `{{ }}` produces an empty string when
 * the variable inside it is not defined
@@ -674,7 +674,7 @@ If you want to have something instead of an empty string in cases where a variab
   
 {{ undefDict.get("key1", "Default value") }} to safely access key in a dictionary
 
-#### Printing a dictionary (JSON)
+## Printing a dictionary (JSON)
 
 You need to be careful when you use print tags `{{ my_dict }}` to print the value of the dictionary. See example below
 ```
@@ -699,7 +699,7 @@ If the variable sometimes contains a dictionary and sometimes a string, you can 
 {{ (my_dict |tojson) if my_dict is mapping else my_dict }}
 ```
 
-### Best practices
+# Best practices
 
 As a final note, we'd like to share a few best practices with you:
 
