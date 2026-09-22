@@ -9,6 +9,9 @@ The idea of templating is simple - use placeholders in your document that the te
 
 ## Table of Content
 
+* TOC
+{:toc}
+
 *   Jinja basics
 *   Expressions
 *   Execution flow control
