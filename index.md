@@ -8,19 +8,10 @@ The idea of templating is simple - use placeholders in your document that the te
 
 
 ## Table of Content
+{:.no_toc}
 
 * TOC
 {:toc}
-
-*   Jinja basics
-*   Expressions
-*   Execution flow control
-*   Standard filters (pipe `|` operator)
-*   Tests (`is` operator)
-*   Global functions (`range`, `cycler`, `joiner`, `lipsum`)
-*   Useful Jinja code snippets
-*   Troubleshooting Jinja code
-*   Best practices
 
 ### Jinja basics
 
