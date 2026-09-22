@@ -1,4 +1,4 @@
 # Things to do
-- [ ] Clickable TOC
-- [ ] Wider layout
+- [x] Clickable TOC
+- [x] Wider layout
 - [ ] Smaller image
