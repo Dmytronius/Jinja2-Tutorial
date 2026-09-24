@@ -130,7 +130,7 @@ Here, we'll share information on:
 
 Note that `+` and `*` operators can be used with strings.
 
-| Operator | &nbsp;&nbsp;&nbsp;&nbsp;Example&nbsp;&nbsp;&nbsp;&nbsp; | Result | Description |
+| Operator | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Result | Description |
 |---|---|---|---|
 | +   | `{{ 1 + 1 }}`  <br>`{{ "a"+"b" }}` | `2`  <br>`"ab"` | Adds two objects together. Usually, the objects are numbers, but if both are strings or lists, you can concatenate them this way. However, this is not the preferred way to concatenate strings. For string concatenation, take a look at the `~` operator. |
 | `-`  | `{{ 3 - 2 }}` | `1`   | Subtracts the second number from the first one. |
