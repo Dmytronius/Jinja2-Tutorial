@@ -35,14 +35,14 @@ Jinja tags are used to identify Jinja code. All text outside the tags is given a
 ## Variables
 
 Similar to Python, Jinja variables are case-sensitive, so `my_var` and `my_var` are two different variables.  
-A variable name can contain alpha-numerical, underscore `_`, and dash `-` characters but not special characters like `[`, `]`, `{`, `}`, `\`, `"`, or `'`.
+A variable name can contain alphanumeric characters, underscores `_`, and dashes `-`, but not special characters like `[`, `]`, `{`, `}`, `\`, `"`, or `'`.
 
-To access the attribute of a variable (dict) you can use a dot `my_dict.my_attr` or "subscript" syntax `my_dict["my_attr"]`.
+To access the attribute of a variable (dict), you can use dot `my_dict.my_attr` or "subscript" syntax `my_dict["my_attr"]`.
 
 The following lines do the same thing:
 ```
 {{ foo.bar }}  
-{{ foo['bar'] }} {# Useful if 'bar' is reserved word and can't be accessed via dot (.) #}
+{{ foo['bar'] }} {# Useful if 'bar' is a reserved word and can't be accessed via dot (.) #}
 ```
 
 If a variable or attribute does not exist, you will get back an undefined value. The default behavior is to evaluate to an empty string if printed or iterated over, and to fail for every other operation.
@@ -53,17 +53,17 @@ If a variable or attribute does not exist, you will get back an undefined value.
 | --- | --- | --- |
 | Integer | `0,1,3_134` | Whole numbers without a decimal part.  <br>The `_` character can be used to separate groups for legibility. |
 | Float | `42.23,42.1e2,`<br>`123_456.789` | Real numbers with a decimal separator. |
-| String | `"apple"`, <br><br>`'Banana'`,  <br>`""`, <br><br>`"\n"` | A Unicode string enclosed in double " or single ' quotes.<br><br>Each individual character can be accessed by index, similar to the list: `{{ "Hello"[0] }}` returns one character `"H"`. The backslash `\` ("escape character") is used to represent control characters like new line `"\n"` and tab `"\t"`, use double backslash `"\\"` for backslash, `\"` for double quotes, and `\'` for a single quote inside the string. For example, `"Hello\n\"World\"` produces the following result:<br>`Hello`<br>`"World"` |
+| String | `"apple"`, <br><br>`'Banana'`,  <br>`""`, <br><br>`"\n"` | A Unicode string enclosed in double `"` or single `'` quotes.<br><br>Each individual character can be accessed by index, similar to a list: `{{ "Hello"[0] }}` returns one character `"H"`. The backslash `\` ("escape character") is used to represent control characters like new line `"\n"` and tab `"\t"`, use double backslash `"\\"` for a backslash, `\"` for double quotes, and `\'` for a single quote inside the string. For example, `"Hello\n\"World\"` produces the following result:<br>`Hello`<br>`"World"` |
 | Boolean | `true` or `false` | Used in logical expressions.<br><br>For example, `1 == 1` evaluates to `true`, while `1 == 2` to `false`. Empty values are considered `false` when used in logical expressions, such as `0`, `""`, `none`, `[]`, and `{}` |
 | List | `[1, 2, "three"]` | A list is an array.<br><br>Its elements can be any data type. They are accessed by index, and the first element has an index of 0. For example, `my_list[1]` returns the second element. |
-| Tuple | `(1, 2, "three")` | A tuple is like a list that cannot be modified ("immutable").<br><br>If a tuple has only one item, it must be followed by a comma `("1-tuple",)` Tuples are usually used to represent items of two or more elements. As with lists, tuples are also indexed beginning from 0.  <br>For example, `my_tuple[1]` returns the second element. |
-| Dictionary (dict) | `my_dict = { "key1":1, "key2":"Value2" }` | A data in dict is stored as a key-value pairs.<br><br>Keys can be Strings, Numbers, Bollean, None, etc. Keys must be unique. Values can be any data type. To indicate an empty value, a special word `null` is used. Values are accessed by dot `.` or brackets `[]`. For example, `my_dict.key1` returns 1, and `my_dict["key2"]` returns `"Value2"` |
+| Tuple | `(1, 2, "three")` | A tuple is like a list that cannot be modified ("immutable").<br><br>If a tuple has only one item, it must be followed by a comma `("1-tuple",)`. Tuples are usually used to represent items of two or more elements. As with lists, tuples are also indexed beginning from 0.  <br>For example, `my_tuple[1]` returns the second element. |
+| Dictionary (dict) | `my_dict = { "key1":1, "key2":"Value2" }` | Data in a dict is stored as key-value pairs.<br><br>Keys can be Strings, Numbers, Boolean, None, etc. Keys must be unique. Values can be any data type. To indicate an empty value, a special word `null` is used. Values are accessed by dot `.` or brackets `[]`. For example, `my_dict.key1` returns 1, and `my_dict["key2"]` returns `"Value2"` |
 
-The special constants `true`, `false`, and `none` are **lowercase**. They can also be written in the title cases (`True`, `False`, and `None`). However, since all Jinja identifiers are lowercase, you should use the lowercase versions for consistency.
+> The special constants `true`, `false`, and `none` are **lowercase**. They can also be written in title case (`True`, `False`, and `None`). However, since all Jinja identifiers are lowercase, you should use the lowercase versions for consistency.
 
 To determine the variable type, you can use a number of built-in `is` tests. While obvious for types like integers and booleans, it becomes trickier for strings and lists because the string is basically a list of characters that can be accessed by index.
 
-The following table shows how to identify each Jinja data type. For example `{{ my_string is string }}` will render to `True`.
+The following table shows how to identify each Jinja data type. For example, `{{ my_string is string }}` will render to `True`.
 
 | JSON definition | Jinja set definition | `is` tests that return `true` |
 | --- | --- | --- |
@@ -137,7 +137,7 @@ Note that `+` and `*` operators can be used with strings.
 | `/`  | `{{ 3 / 2 }}` | `1.5` | Divides two numbers. The returned value will be a floating point number. |
 | `//`  | `{{ 3 // 2 }}` | `1`   | Divides two numbers and returns the truncated integer result. |
 | `%`   | `{{ 11 % 7 }}` | `4 `  | Calculates the remainder of an integer division. |
-| `*`  | `{{ 2 \* 2 }}` <br> `{{ "a" * 3 }}` | `4` <br> `"aaa"` | Multiplies two numbers. This can also be used to repeat a string multiple times. |
+| `*`  | `{{ 2 * 2 }}` <br> `{{ "a" * 3 }}` | `4` <br> `"aaa"` | Multiplies two numbers. This can also be used to repeat a string multiple times. |
 | `**` | `{{ 2 ** 3 }}` | `8`   | Raises the left operand to the power of the right operand. |
 
 ## Comparison expressions
@@ -151,12 +151,12 @@ Jinja inherits the comparison operators from Python.
 * `<` - true if the left operand is **lower than** the right operand
 * `<=` - true if the left operand is **lower than or equal** **to** the right operand
 
-Comparisons can be chained arbitrarily. For example, `x < y < z` is equivalent to `x < y and y < z`, except that `y` is evaluated only once. Note that in both cases, `z` is not evaluated at all when `x < y` is found to be `false`. More information can be found in the Python documentation for comparison operations.
+Comparisons can be chained arbitrarily. For example, `x < y < z` is equivalent to `x < y and y < z`, except that `y` is evaluated only once. Note that in both cases, `z` is not evaluated at all when `x < y` is found to be `false`. More information can be found in the [Python documentation for comparison operations](https://docs.python.org/2/reference/expressions.html#comparisons).
 
 ## Logic (boolean) expressions
 
 Logic operators are inherited from Python, the same as comparisons. In Python, the left operand is always evaluated before the right operand.   
-Python uses short circuiting when evaluating expressions involving the `and` or `or` operators. When using those operators, Python does not evaluate the second operand unless it is necessary to resolve the result. That allows statements such as `if (s != None) and (len(s) < 10)` to work reliably.
+Python uses short-circuiting when evaluating expressions involving the `and` or `or` operators. When using those operators, Python does not evaluate the second operand unless it is necessary to resolve the result. That allows statements such as `if (s != None) and (len(s) < 10)` to work reliably.
 
 *   `or` - true if one of the operands is true. If the left operand is true, then stops and returns true. If the left operand is false, then the right operand is checked.
 *   `and` - true if both operands are true. If the left operand is false, then stops and returns false. If the left operand is true, then the right operand is checked.
@@ -173,7 +173,7 @@ In this example, the _or_ operator returns `my_var` if it has a truthy value, or
 
 Non-boolean values are considered true (also known as truthy), or false (also known as falsy) based on their value. Basically, all empty values are considered false, and all other values are considered true.
 
-Here is the list of most important values that are falsy in a boolean context:
+Here is the list of the most important values that are falsy in a boolean context:
 
 *   `undefined`
 *   `none`
@@ -183,7 +183,7 @@ Here is the list of most important values that are falsy in a boolean context:
 *   `{}` - an empty dict
 *   `()` - an empty tuple
 
-More information can be found in the Python documentation for truth value testing.
+More information can be found in the [Python documentation for truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing).
 
 To better understand how it works, we can rewrite the logical expression with conditional expressions.
 
@@ -205,12 +205,12 @@ Below, we'll explore:
 *   `if` statement
 *   Inline `if` expression
 *   `for loop` (conditional. over dictionary, sorted, items())
-*   Accessing variables across the scopes (inside loop)
+*   Accessing variables across scopes (inside loop)
     
 
 ## `if` statement
 
-The `if` statement in Jinja is comparable with the Python `if` statement.
+The `if` statement in Jinja is comparable to the Python `if` statement.
 
 ```
 {% if 5 <= hour < 12 %}   
@@ -224,14 +224,14 @@ Good night!
 
 ## Inline `if` expression
 
-This is how to write the if condition in one line. For print Jinja tag the syntax looks as follows:
+This is how to write the if condition in one line. For the print Jinja tag, the syntax looks as follows:
 ```
 {{ my_var if my_var else "default value" }}
 ```
 
-In this example, the value of `my_var` is printed if it is not empty. Otherwise, `"default value"` is returned. The else part is optional, but it is recommended to specify a default value to handle exceptions. If not provided, the else block implicitly evaluates into an `undefined` object.
+In this example, the value of `my_var` is printed if it is not empty. Otherwise, `"default value"` is returned. The else part is optional, but it is recommended to specify a default value to handle exceptions. If not provided, the else block implicitly evaluates to an `undefined` object.
 
-Below, we show how to set my_var to 0 when it is <0 and leave it untouched otherwise.
+Below, we show how to set `my_var` to 0 when it is <0 and leave it untouched otherwise.
 ```
 {% set my_var = 0 if my_var < 0 %}{# WRONG! my_var is set to undefind when >= 0 #}  
 {% set my_var = 0 if my_var < 0 else my_var %}{# RIGHT! my_var is untouched when >= 0 #}
@@ -247,7 +247,7 @@ In this section, we'll address:
 
 **`else` clause in for loop**
 
-Jinja has a special clause `else` that can be used in loops. The code in this block is executed when no iteration took place in for loop. That can happen because the sequence was empty or the filtering removed all the items from the sequence.
+Jinja has a special clause `else` that can be used in loops. The code in this block is executed when no iteration took place in the for loop. That can happen because the sequence was empty or the filtering removed all the items from the sequence.
 
 ```
 {% for item in [1, "two", {"name":"three"}] %}   
@@ -259,9 +259,9 @@ Jinja has a special clause `else` that can be used in loops. The code in this bl
 
 **Looping with the condition and special variable loop**
 
-You can filter the sequence during iteration by using an inline if expression. Inside of a for-loop block, you can access a special loop variable like `loop.index` for the number of the current iteration, `loop.first` for detecting the first iteration, and so on.
+You can filter the sequence during iteration by using an inline if expression. Inside a for-loop block, you can access a special loop variable like `loop.index` for the number of the current iteration, `loop.first` for detecting the first iteration, and so on.
 
-A complete list of special loop variables is available in the Jinja for-loop documentation. 
+A complete list of special loop variables is available in the [Jinja for-loop documentation](https://jinja.palletsprojects.com/en/2.11.x/templates/#for-loop). 
 
 The following example will show all elements of the list that are greater than 1 and will detect iteration over the list's first and last elements:
 ```
@@ -332,9 +332,9 @@ The tomato's cost is 2 and it is a vegetable
 
 Usually, you need to have the output sorted, which you can do with `dictsort` filter. By default, it sorts by `key`, but you can change it to `values`. You can also change the direction of the sort and adjust case sensitivity. The values should be either numbers or strings, not dictionaries.
 
-You can read more in the Jinja documentation on dictsort.
+You can read more in the [Jinja documentation on dictsort](https://jinja.palletsprojects.com/en/2.11.x/templates/#dictsort).
 
-By default, the dictsort filter sorts by `key`, case insensitive, and ascending.
+By default, the dictsort filter sorts by `key`, case-insensitively, and ascending.
 ```
 {% for key, val in food_dict | dictsort -%}  
 The {{ key }}'s value is {{ val }}  
@@ -364,11 +364,11 @@ The carrot's cost is 1
 
 ## Accessing variables across scopes (inside loop)
 
-Jinja has very strict variable scoping. If you have an assignment in a loop, it won't work because you don't have access to outer variables inside the loop scope. The solution is to use a special `loop` variable or use a namespace object to allow changes across the scopes (v2.10+).
+Jinja has very strict variable scoping. If you have an assignment in a loop, it won't work because you don't have access to outer variables inside the loop scope. The solution is to use a special `loop` variable or use a namespace object to allow changes across scopes (v2.10+).
 
-More information can be found in the Jinja documentation on assignments.
+More information can be found in the [Jinja documentation on assignments](https://jinja.palletsprojects.com/en/2.11.x/templates/#assignments).
 
-The following example shows that the assignment of the `found2` inside for-loop fails while the assignment of `ns.found` succeeds.
+The following example shows that the assignment of `found2` inside a for loop fails while the assignment of `ns.found` succeeds.
 
 ```
 {% set ns = namespace(found=false) -%} {# Creates ns dict with attribute found set to false #}  
@@ -390,9 +390,9 @@ found2   = False
   
 # Standard filters (pipe | operator)
 
-We've seen the use of filters in previous examples. Filters are essentially the functions that are called with a pipe operator | and can take arguments. Multiple filters can be chained. In this case, the output of one filter is applied to the next one.
+We've seen the use of filters in previous examples. Filters are essentially functions that are called with a pipe operator | and can take arguments. Multiple filters can be chained. In this case, the output of one filter is applied to the next one.
 
-The full list of built-in filters is available in the Jinja documentation.
+The [full list of built-in filters](https://jinja.palletsprojects.com/en/2.11.x/templates/#builtin-filters) is available in the Jinja documentation.
 
 We highlight some of the most useful filters here:
 
@@ -466,7 +466,7 @@ In this table are the most important characters that get replaced by HTML escapi
 
 ## tojson
 
-Serializes input to JSON text. It escapes special characters in strings according to JSON specifications.
+Serializes input to JSON text. It escapes special characters in strings according to [JSON specifications](https://www.rfc-editor.org/rfc/rfc7159#section-7).
 
 Below is an example of serializing strings and a dictionary. Note that the strings automatically get surrounded by double quotes, and the keyword None in Jinja changes to null in JSON.
 
@@ -495,9 +495,9 @@ Here, you can see the most important characters that get escaped by Unicode esca
 
 # Tests (`is` operator)
 
-The test operator tests left operand against the test provided as right operand. The result is boolean True or False.
+The test operator tests the left operand against the test provided as the right operand. The result is a boolean True or False.
 
-A full list of Builtin Tests is available in the Jinja documentation.
+A [full list of built-in tests](https://jinja.palletsprojects.com/en/2.11.x/templates/#builtin-tests) is available in the Jinja documentation.
 
 Here, we highlight the most useful filters. 
 
@@ -524,7 +524,7 @@ The functions noted here are available in the global scope by default. In this s
 *   `joiner(sep=",")`
 *   `lipsum(n=5, html=True, min=20, max=100)`
 
-Find the full list of global functions in the Jinja documentation.
+Find the [full list of global functions](https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-globals) in the Jinja documentation.
 
 ## range([start, ]stop[, step])
 
@@ -580,7 +580,7 @@ In this section, you can find information on:
 
 It is also possible to use the standard Python function for string manipulation. 
 
-The full list of the functions is available in the Python documentation for String Methods.
+The full list of the functions is available in the [Python documentation for String Methods](https://docs.python.org/3/library/stdtypes.html#string-methods).
 
 Below is a table of some of the most useful string functions. 
 Consider:
@@ -700,10 +700,10 @@ If the variable sometimes contains a dictionary and sometimes a string, you can 
 
 # Best practices
 
-As a final note, we'd like to share a few best practices with you:
+As a final note, I'd like to share a few best practices with you:
 
-1.  Use Jinja online parsers for debugging, such as the TTL255 Jinja2 parser 
-2.  Always convert to the proper data type prior to using any filters. For example:  
+1.  Use Jinja online parsers for debugging, such as the [TTL255 Jinja2 parser](https://j2live.ttl255.com) 
+2.  Always convert to the proper data type before using any filters. For example:  
 ```
 {{ set value = "123" }}   
 {{ value > 100 }} given the value is of "string" type, make sure you convert to integer first   
