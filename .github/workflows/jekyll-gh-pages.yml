@@ -32,7 +32,7 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Fix pipe characters inside backticks
         run: |
-          find . -type f \( -name "*.md" \) -exec perl -pi -e 's/\\\|/&#124;/g' {} +
+          find . -type f \( -name "*.md" \) -exec perl -pi -e 's/\\\|/\|/g' {} +
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
