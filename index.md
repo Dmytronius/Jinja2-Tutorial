@@ -99,8 +99,8 @@ The table here demonstrates the difference between these keywords:
 | --- | --- | --- |
 | `in`  | `{{ 1 in [1, 2, 3] }} True` <br> `{{ "el" in "Hello" }} True`  <br>`{{ 1 not in [1, 2, 3] }} False`  <br>`{{ not 1 in [1, 2, 3] }} False` | Returns `true` if the left operand is contained in the right. Supports negation using an infix notation - `not in`. |
 | `is`  | `{{ "a" is string }} True`  <br>`{{ "a" is not string }} False`  <br>`{{ not "a" is string }} False` | Returns true if the test is successful. See the list of built-in tests in the test chapter. Supports infix negation - "is not". |
-| `\|`  | `{{ userName\|default("sir") }}` | Applies a filter. |
-| `~`   | `{{ "Hello " ~ userName }}`  <br>Hello John | Converts all operands into strings and concatenates them. |
+| `\|`  | `{{ user_name\|default("sir") }}` | Applies a filter. |
+| `~`   | `{{ "Hello " ~ user_name }}`  <br>Hello John | Converts all operands into strings and concatenates them. |
 | `()`  | `{{ my_var.replace(" ", "_") }}` | Calls a callable. |
 | `.` and `[]` | `{{ myDict["myAttr"] }}` | Gets an attribute of an object. |
 
@@ -132,9 +132,9 @@ Note that `+` and `*` operators can be used with strings.
 
 | Operator | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Example&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Result | Description |
 |---|---|---|---|
-| +   | `{{ 1 + 1 }}`  <br>`{{ "a"+"b" }}` | `2`  <br>`"ab"` | Adds two objects together. Usually, the objects are numbers, but if both are strings or lists, you can concatenate them this way. However, this is not the preferred way to concatenate strings. For string concatenation, take a look at the `~` operator. |
+| `+`   | `{{ 1 + 1 }}`  <br>`{{ "a"+"b" }}` | `2`  <br>`"ab"` | Adds two objects together. Usually, the objects are numbers, but if both are strings or lists, you can concatenate them this way. However, this is not the preferred way to concatenate strings. For string concatenation, take a look at the `~` operator. |
 | `-`  | `{{ 3 - 2 }}` | `1`   | Subtracts the second number from the first one. |
-| `/`  | `{{ 3 / 2 }}` | `1.5` | Divides two numbers. The returned value will be a floating point number. |
+| `/`  | `{{ 3 / 2 }}` | `1.5` | Divides two numbers. The returned value will be a floating-point number. |
 | `//`  | `{{ 3 // 2 }}` | `1`   | Divides two numbers and returns the truncated integer result. |
 | `%`   | `{{ 11 % 7 }}` | `4 `  | Calculates the remainder of an integer division. |
 | `*`  | `{{ 2 * 2 }}` <br> `{{ "a" * 3 }}` | `4` <br> `"aaa"` | Multiplies two numbers. This can also be used to repeat a string multiple times. |
@@ -252,7 +252,7 @@ Jinja has a special clause `else` that can be used in loops. The code in this bl
 ```
 {% for item in [1, "two", {"name":"three"}] %}   
   {{ item }}   
-{% **else** %}   
+{% else %}   
   The list is empty   
 {% endfor %}
 ```
@@ -398,15 +398,15 @@ We highlight some of the most useful filters here:
 
 | Example | Output | Description |
 | --- | --- | --- |
-| `{{ [0,1,2] \| length }}` | 3   | Returns the number of items in a container |
-| `{{ [0,1,2] \| first }}` | 0   | First item of a sequence |
-| `{{["yes","no","maybe"] | random}}` | maybe | Random item of a sequence |
-| `{{ "world" \| last }}` | d   | Last item of a sequence |
-| `{{ [0,1,2] \| max }}` | 2   | The largest item from the sequence |
-| `{{["yes","no","maybe"] | min}}` | maybe | The smallest item from the sequence |
-| `{{ [0,2,1] | sort }}` | `[0,1,2]` | Sorts an iterable |
-| `{{"b":1, "a":2, "c":3} |dictsort}}` | `[('a', 2), ('b', 1), ('c', 3)]` | Sorts a dictionary by key or value |
-| `{{ "<b>my text</b><br>" |striptags }}` | `my text` | Removes HTML tags and replaces adjacent whitespace with one space |
+| `{{ [0,1,2] \| length }}` | `3`   | Returns the number of items in a container |
+| `{{ [0,1,2] \| first }}` | `0`   | First item of a sequence |
+| `{{["yes","no","maybe"]\|random}}` | `maybe` | Random item of a sequence |
+| `{{ "world" \| last }}` | `d`   | Last item of a sequence |
+| `{{ [0,1,2] \| max }}` | `2`   | The largest item from the sequence |
+| `{{["yes","no","maybe"] \| min}}` | `maybe` | The smallest item from the sequence |
+| `{{ [0,2,1] \| sort }}` | `[0,1,2]` | Sorts an iterable |
+| `{{"b":1,"a":2,"c":3}\|dictsort}}` | `[('a',2), ('b',1), ('c',3)]` | Sorts a dictionary by key or value |
+| `{{"<b>text</b><br>"\|striptags}}` | `text` | Removes HTML tags and replaces adjacent whitespace with one space |
 
   
 Below, we'll cover:
